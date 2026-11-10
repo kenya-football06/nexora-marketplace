@@ -4,127 +4,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NEXORA MARKETPLACE | Buy & Sell</title>
-<meta name="description" content="Shop quality second-hand electronics, phones and furniture in Kenya. Affordable prices. All prices negotiable.">
+<title>NEXORA MARKETPLACE | Buy & Sell Kenya</title>
+<meta name="description" content="Shop affordable second-hand electronics, smartphones and furniture in Kenya. Quality products at negotiable prices.">
+<meta name="theme-color" content="#087c53">
+
 <style>
-:root {
-  --green:#087c53;
-  --dark:#10251e;
-  --light:#f4f7f5;
-  --white:#fff;
-  --muted:#718078;
+:root{
+--green:#087c53;
+--dark:#10251e;
+--light:#f4f7f5;
+--white:#fff;
+--muted:#718078;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 body{font-family:Arial,sans-serif;background:var(--light);color:var(--dark)}
-header{background:#fff;padding:16px 5%;display:flex;align-items:center;justify-content:space-between;gap:15px;position:sticky;top:0;z-index:10;box-shadow:0 2px 12px #0000000d}
+header{
+background:#fff;padding:16px 5%;display:flex;
+align-items:center;justify-content:space-between;
+gap:15px;position:sticky;top:0;z-index:10;
+box-shadow:0 2px 12px #0000000d
+}
 .logo{font-size:23px;font-weight:900;color:var(--green)}
 .logo span{color:#17251e}
 nav{display:flex;gap:18px}
 nav a{text-decoration:none;color:#26382f;font-weight:600;font-size:14px}
-.hero{background:linear-gradient(120deg,#082c20,#087c53);color:white;padding:55px 6%;text-align:center}
+.hero{
+background:linear-gradient(120deg,#082c20,#087c53);
+color:white;padding:55px 6%;text-align:center
+}
 .hero h1{font-size:clamp(28px,5vw,46px);margin-bottom:12px}
-.hero p{color:#d6eee3;font-size:16px;line-height:1.6}
-.hero button{margin-top:22px;padding:13px 25px;border:0;border-radius:8px;background:#fff;color:var(--green);font-weight:bold;cursor:pointer}
-.search-area{max-width:1100px;margin:-24px auto 25px;padding:0 15px;position:relative}
-.search-area input{width:100%;padding:17px;border:1px solid #ddd;border-radius:10px;font-size:16px;box-shadow:0 5px 20px #00000010}
+.hero p{color:#d6eee3;font-size:16px;line-height:1.7}
+.hero button{
+margin-top:22px;padding:13px 25px;border:0;
+border-radius:8px;background:#fff;color:var(--green);
+font-weight:bold;cursor:pointer
+}
+.search-area{
+max-width:1100px;margin:-24px auto 25px;
+padding:0 15px;position:relative
+}
+.search-area input{
+width:100%;padding:17px;border:1px solid #ddd;
+border-radius:10px;font-size:16px;
+box-shadow:0 5px 20px #00000010
+}
 .container{max-width:1250px;margin:auto;padding:15px}
-.section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:25px 0 17px}
+.section-heading{
+display:flex;justify-content:space-between;
+align-items:center;gap:10px;margin:25px 0 17px
+}
 .section-heading h2{font-size:23px}
 #count{color:var(--muted);font-size:13px}
 .filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px}
-.filters button{border:1px solid #dce5df;background:white;padding:10px 17px;border-radius:30px;cursor:pointer;font-weight:600}
-.filters button.active,.filters button:hover{background:var(--green);color:white;border-color:var(--green)}
+.filters button{
+border:1px solid #dce5df;background:white;
+padding:10px 17px;border-radius:30px;
+cursor:pointer;font-weight:600
+}
+.filters button.active,.filters button:hover{
+background:var(--green);color:white;border-color:var(--green)
+}
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
-.card{background:white;border-radius:12px;overflow:hidden;box-shadow:0 3px 14px #00000009;transition:.2s}
+.card{
+background:white;border-radius:12px;overflow:hidden;
+box-shadow:0 3px 14px #00000009;transition:.2s
+}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 20px #00000012}
-.product-image{height:175px;background:linear-gradient(135deg,#e6eee9,#d5e5dc);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.product-image img{width:100%;height:100%;object-fit:cover}
+.product-image{
+height:190px;background:linear-gradient(135deg,#e6eee9,#d5e5dc);
+display:flex;align-items:center;justify-content:center;
+position:relative;overflow:hidden;cursor:pointer
+}
+.product-image img{width:100%;height:100%;object-fit:cover;display:block}
 .placeholder{font-size:62px}
-.category-tag{position:absolute;top:10px;left:10px;background:#ffffffed;color:var(--green);padding:6px 9px;border-radius:5px;font-size:11px;font-weight:bold}
+.category-tag{
+position:absolute;top:10px;left:10px;
+background:#ffffffed;color:var(--green);
+padding:6px 9px;border-radius:5px;
+font-size:11px;font-weight:bold
+}
+.zoom-hint{
+position:absolute;bottom:9px;right:9px;
+background:#10251ebd;color:white;
+padding:6px 9px;border-radius:5px;font-size:11px
+}
 .card-info{padding:14px}
 .card-info h3{font-size:15px;margin-bottom:8px;min-height:34px}
 .price{font-size:19px;font-weight:800;color:var(--green)}
-.negotiable{display:inline-block;background:#e5f5ec;color:#087c53;font-size:11px;font-weight:bold;padding:5px 8px;border-radius:5px;margin:8px 0}
+.negotiable{
+display:inline-block;background:#e5f5ec;color:#087c53;
+font-size:11px;font-weight:bold;padding:5px 8px;
+border-radius:5px;margin:8px 0
+}
 .condition{font-size:12px;color:var(--muted);margin-bottom:12px}
 .actions{display:flex;gap:7px}
-.actions a{flex:1;text-align:center;text-decoration:none;padding:10px 5px;border-radius:6px;font-size:12px;font-weight:bold}
+.actions a{
+flex:1;text-align:center;text-decoration:none;
+padding:10px 5px;border-radius:6px;
+font-size:12px;font-weight:bold
+}
 .wa{background:#20bd67;color:white}
 .call{background:#edf3ef;color:#173b2b}
 .empty{text-align:center;padding:50px;color:var(--muted);display:none}
-footer{margin-top:55px;background:#10251e;color:white;padding:35px 6%;text-align:center}
+footer{
+margin-top:55px;background:#10251e;color:white;
+padding:35px 6%;text-align:center
+}
 footer p{color:#c4d6cb;margin:10px 0;font-size:14px}
 footer a{color:#65df9d;text-decoration:none}
-.contact-buttons{display:flex;justify-content:center;gap:12px;margin:20px 0;flex-wrap:wrap}
-.contact-buttons a{padding:13px 20px;border-radius:8px;text-decoration:none;font-weight:bold}
-@media(max-width:900px){.grid{grid-template-columns:repeat(3,1fr)}}
+.contact-buttons{
+display:flex;justify-content:center;gap:12px;
+margin:20px 0;flex-wrap:wrap
+}
+.contact-buttons a{
+padding:13px 20px;border-radius:8px;text-decoration:none;
+font-weight:bold
+}
+
+/* Full screen product image viewer */
+.image-viewer{
+display:none;position:fixed;inset:0;
+background:#000000f2;z-index:1000;
+align-items:center;justify-content:center;padding:20px
+}
+.image-viewer.show{display:flex}
+.image-viewer img{
+max-width:95%;max-height:85vh;object-fit:contain;
+border-radius:8px
+}
+.close-viewer{
+position:absolute;top:18px;right:22px;
+color:white;font-size:36px;cursor:pointer;
+background:none;border:0
+}
+.viewer-caption{
+position:absolute;bottom:20px;color:white;
+font-size:15px;text-align:center
+}
+
+@media(max-width:900px){
+.grid{grid-template-columns:repeat(3,1fr)}
+}
 @media(max-width:600px){
- header{padding:13px 4%}
- nav{gap:10px}
- nav a{font-size:12px}
- .logo{font-size:19px}
- .hero{padding:45px 5%}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .product-image{height:140px}
- .card-info{padding:10px}
- .card-info h3{font-size:13px}
- .price{font-size:16px}
- .actions a{font-size:10px}
- .section-heading h2{font-size:19px}
+header{padding:13px 4%}
+nav{gap:10px}
+nav a{font-size:12px}
+.logo{font-size:18px}
+.hero{padding:45px 5%}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.product-image{height:145px}
+.card-info{padding:10px}
+.card-info h3{font-size:13px}
+.price{font-size:16px}
+.actions a{font-size:10px}
+.section-heading h2{font-size:19px}
 }
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">NEXORA <span>MARKETPLACE</span></div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<div class="logo">NEXORA <span>MARKETPLACE</span></div>
+<nav>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
+<a href="#contact">Contact</a>
+</nav>
 </header>
 
 <section class="hero" id="home">
-  <h1>Find It. Love It. Own It.</h1>
-  <p>Quality second-hand products at affordable prices.<br>
-  Shop electronics, phones and furniture. Every price is negotiable!</p>
-  <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
-    EXPLORE PRODUCTS ↓
-  </button>
+<h1>Find It. Love It. Own It.</h1>
+<p>
+Quality second-hand products at affordable prices.<br>
+Shop electronics, phones and furniture. Every price is negotiable!
+</p>
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+EXPLORE PRODUCTS ↓
+</button>
 </section>
 
 <div class="search-area">
-  <input id="search" type="search" placeholder="🔍 Search phones, beds, TVs, wardrobes..." oninput="renderProducts()">
+<input id="search" type="search"
+placeholder="🔍 Search phones, beds, TVs, wardrobes..."
+oninput="renderProducts()">
 </div>
 
 <main class="container" id="products">
-  <div class="section-heading">
-    <h2>Explore Our Products</h2>
-    <span id="count">109 products</span>
-  </div>
+<div class="section-heading">
+<h2>Explore Our Products</h2>
+<span id="count">109 products</span>
+</div>
 
-  <div class="filters">
-    <button class="active" onclick="setCategory('All',this)">All Products</button>
-    <button onclick="setCategory('Electronics',this)">Electronics</button>
-    <button onclick="setCategory('Phones',this)">Phones</button>
-    <button onclick="setCategory('Furniture',this)">Furniture</button>
-  </div>
+<div class="filters">
+<button class="active" onclick="setCategory('All',this)">All Products</button>
+<button onclick="setCategory('Electronics',this)">Electronics</button>
+<button onclick="setCategory('Phones',this)">Phones</button>
+<button onclick="setCategory('Furniture',this)">Furniture</button>
+</div>
 
-  <div class="grid" id="productGrid"></div>
-  <div class="empty" id="empty">No products found. Try another search.</div>
+<div class="grid" id="productGrid"></div>
+<div class="empty" id="empty">No products found. Try another search.</div>
 </main>
 
 <footer id="contact">
-  <h2>NEXORA MARKETPLACE</h2>
-  <p>Your marketplace for affordable second-hand products.</p>
-  <p>Want to buy something? Contact the owner directly.</p>
-  <div class="contact-buttons">
-    <a class="wa" href="https://wa.me/254762103221" target="_blank">WhatsApp Owner</a>
-    <a class="call" href="tel:+254762103221">Call Owner</a>
-  </div>
-  <p>WhatsApp / Call: 0762103221</p>
-  <p>© 2026 NEXORA MARKETPLACE. All rights reserved.</p>
+<h2>NEXORA MARKETPLACE</h2>
+<p>Your marketplace for affordable second-hand products in Kenya.</p>
+<p>Want to buy something? Contact the owner directly.</p>
+
+<div class="contact-buttons">
+<a class="wa" href="https://wa.me/254762103221" target="_blank" rel="noopener">WhatsApp Owner</a>
+<a class="call" href="tel:+254762103221">Call Owner</a>
+</div>
+
+<p>WhatsApp / Call: 0762103221</p>
+<p>© 2026 NEXORA MARKETPLACE. All rights reserved.</p>
 </footer>
+
+<!-- Full-screen image viewer -->
+<div class="image-viewer" id="imageViewer" onclick="closeViewer()">
+<button class="close-viewer" aria-label="Close">&times;</button>
+<img id="viewerImage" src="" alt="Product photograph">
+<div class="viewer-caption" id="viewerCaption"></div>
+</div>
 
 <script>
 const OWNER = "254762103221";
@@ -241,77 +344,108 @@ const inventory = [
 ["Furniture","Bar Stool (Pair)",3500,"🪑"]
 ];
 
-// One listing is created for each item above.
-// Replace the empty image field with the URL of your actual product photo.
+// Uploaded product photographs
+const imageFiles = {
+"Apple iPhone 11":"iphone-11.jpg",
+"Apple iPhone 12":"iphone-12.jpg",
+"Apple iPhone 13":"iphone-13.jpg",
+"Apple iPhone XR":"iphone-xr.jpg",
+"Samsung Galaxy A14":"samsung-a14.jpg",
+"Samsung Galaxy A24":"samsung-a24.jpg",
+"Infinix Hot Series":"infinix-hot.jpg",
+"Infinix Note Series":"infinix-note.jpg",
+"Redmi Note Series":"redmi-note.jpg"
+};
+
 const products = inventory.map((item,index)=>({
-  id:index+1,
-  category:item[0],
-  name:item[1],
-  price:item[2],
-  icon:item[3],
-  image:"",
-  condition:"Good",
-  description:"Contact the owner for more details, actual photos and to negotiate the price."
+id:index+1,
+category:item[0],
+name:item[1],
+price:item[2],
+icon:item[3],
+image:imageFiles[item[1]] || "",
+condition:"Good",
+description:"Contact the owner for more details and to negotiate the price."
 }));
 
-let selectedCategory = "All";
+let selectedCategory="All";
 
 function setCategory(category,button){
-  selectedCategory=category;
-  document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
-  button.classList.add("active");
-  renderProducts();
+selectedCategory=category;
+document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
+button.classList.add("active");
+renderProducts();
 }
 
 function formatPrice(price){
-  return "KSh "+Number(price).toLocaleString("en-KE");
+return "KSh "+Number(price).toLocaleString("en-KE");
 }
 
 function whatsappLink(product){
-  const message=`Hello, I am interested in ${product.name}. Your listed asking price is ${formatPrice(product.price)}. Is it available? I would like to negotiate.`;
-  return `https://wa.me/${OWNER}?text=${encodeURIComponent(message)}`;
+const message=`Hello, I am interested in ${product.name}. Your listed asking price is ${formatPrice(product.price)}. Is it available? I would like to negotiate.`;
+return `https://wa.me/${OWNER}?text=${encodeURIComponent(message)}`;
 }
 
+function openViewer(image,name){
+if(!image)return;
+const viewer=document.getElementById("imageViewer");
+document.getElementById("viewerImage").src=image;
+document.getElementById("viewerCaption").textContent=name;
+viewer.classList.add("show");
+document.body.style.overflow="hidden";
+}
+
+function closeViewer(){
+document.getElementById("imageViewer").classList.remove("show");
+document.getElementById("viewerImage").src="";
+document.body.style.overflow="";
+}
+
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape")closeViewer();
+});
+
 function renderProducts(){
-  const query=document.getElementById("search").value.toLowerCase().trim();
-  const grid=document.getElementById("productGrid");
+const query=document.getElementById("search").value.toLowerCase().trim();
+const grid=document.getElementById("productGrid");
 
-  const filtered=products.filter(p=>{
-    const categoryMatch=selectedCategory==="All"||p.category===selectedCategory;
-    const searchMatch=(p.name+" "+p.category).toLowerCase().includes(query);
-    return categoryMatch&&searchMatch;
-  });
+const filtered=products.filter(p=>{
+const categoryMatch=selectedCategory==="All"||p.category===selectedCategory;
+const searchMatch=(p.name+" "+p.category).toLowerCase().includes(query);
+return categoryMatch&&searchMatch;
+});
 
-  document.getElementById("count").textContent=
-    `${filtered.length} products`;
+document.getElementById("count").textContent=`${filtered.length} products`;
+document.getElementById("empty").style.display=filtered.length?"none":"block";
 
-  document.getElementById("empty").style.display=
-    filtered.length?"none":"block";
+grid.innerHTML=filtered.map(p=>`
+<article class="card">
+<div class="product-image" onclick="openViewer('${p.image}','${p.name.replace(/'/g,"&#39;")}')">
+${p.image
+? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+<div class="placeholder" style="display:none">${p.icon}</div>
+<span class="zoom-hint">Tap to enlarge</span>`
+: `<div class="placeholder">${p.icon}</div>`
+}
+<span class="category-tag">${p.category}</span>
+</div>
 
-  grid.innerHTML=filtered.map(p=>`
-    <article class="card">
-      <div class="product-image">
-        ${p.image
-          ? `<img src="${p.image}" alt="${p.name}" loading="lazy">`
-          : `<div class="placeholder">${p.icon}</div>`
-        }
-        <span class="category-tag">${p.category}</span>
-      </div>
-      <div class="card-info">
-        <h3>${p.name}</h3>
-        <div class="price">${formatPrice(p.price)}</div>
-        <span class="negotiable">PRICE NEGOTIABLE</span>
-        <div class="condition">Condition: ${p.condition}</div>
-        <div class="actions">
-          <a class="wa" href="${whatsappLink(p)}" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="call" href="tel:+${OWNER}">Call</a>
-        </div>
-      </div>
-    </article>
-  `).join("");
+<div class="card-info">
+<h3>${p.name}</h3>
+<div class="price">${formatPrice(p.price)}</div>
+<span class="negotiable">PRICE NEGOTIABLE</span>
+<div class="condition">Condition: ${p.condition}</div>
+<div class="actions">
+<a class="wa" href="${whatsappLink(p)}" target="_blank" rel="noopener">WhatsApp</a>
+<a class="call" href="tel:+${OWNER}">Call</a>
+</div>
+</div>
+</article>
+`).join("");
 }
 
 renderProducts();
 </script>
+
 </body>
 </html>

@@ -77,7 +77,7 @@ display:flex;align-items:center;justify-content:center;
 position:relative;overflow:hidden;cursor:pointer
 }
 .product-image img{width:100%;height:100%;object-fit:cover;display:block}
-.placeholder{font-size:62px}
+.placeholder{font-size:62px;align-items:center;justify-content:center;width:100%;height:100%}
 .category-tag{
 position:absolute;top:10px;left:10px;
 background:#ffffffed;color:var(--green);
@@ -122,7 +122,7 @@ padding:13px 20px;border-radius:8px;text-decoration:none;
 font-weight:bold
 }
 
-/* Full screen product image viewer */
+/* Fullscreen image viewer */
 .image-viewer{
 display:none;position:fixed;inset:0;
 background:#000000f2;z-index:1000;
@@ -222,9 +222,8 @@ oninput="renderProducts()">
 <p>© 2026 NEXORA MARKETPLACE. All rights reserved.</p>
 </footer>
 
-<!-- Full-screen image viewer -->
-<div class="image-viewer" id="imageViewer" onclick="closeViewer()">
-<button class="close-viewer" aria-label="Close">&times;</button>
+<div class="image-viewer" id="imageViewer">
+<button class="close-viewer" id="closeViewer" aria-label="Close">&times;</button>
 <img id="viewerImage" src="" alt="Product photograph">
 <div class="viewer-caption" id="viewerCaption"></div>
 </div>
@@ -344,107 +343,286 @@ const inventory = [
 ["Furniture","Bar Stool (Pair)",3500,"🪑"]
 ];
 
-// Uploaded product photographs
+// IMAGE FILES
+// All photographs must be uploaded into the same folder as index.html.
+
 const imageFiles = {
-"Apple iPhone 11":"iphone-11.jpg",
-"Apple iPhone 12":"iphone-12.jpg",
-"Apple iPhone 13":"iphone-13.jpg",
-"Apple iPhone XR":"iphone-xr.jpg",
-"Samsung Galaxy A14":"samsung-a14.jpg",
-"Samsung Galaxy A24":"samsung-a24.jpg",
-"Infinix Hot Series":"infinix-hot.jpg",
-"Infinix Note Series":"infinix-note.jpg",
-"Redmi Note Series":"redmi-note.jpg"
+
+  // PHONES
+  "Apple iPhone 11":"iphone-11.jpg",
+  "Apple iPhone 12":"iphone-12.jpg",
+  "Apple iPhone 13":"iphone-13.jpg",
+  "Apple iPhone XR":"iphone-xr.jpg",
+  "Samsung Galaxy A14":"samsung-a14.jpg",
+  "Samsung Galaxy A24":"samsung-a24.jpg",
+  "Samsung Galaxy S21":"samsung-s21.jpg",
+  "Samsung Galaxy S22":"samsung-s22.jpg",
+  "Tecno Spark Series":"tecno-spark.jpg",
+  "Tecno Camon Series":"tecno-camon.jpg",
+  "Infinix Hot Series":"infinix-hot.jpg",
+  "Infinix Note Series":"infinix-note.jpg",
+  "Redmi Note Series":"redmi-note.jpg",
+
+  // ELECTRONICS
+  "Smart LED TV 32-inch":"smart-led-tv-32-inch.jpg",
+  "Smart LED TV 43-inch":"smart-led-tv-43-inch.jpg",
+  "LED TV 50-inch":"led-tv-50-inch.jpg",
+  "Home Theatre System":"home-theatre-system.jpg",
+  "Bluetooth Speaker":"bluetooth-speaker.jpg",
+  "Soundbar":"soundbar.jpg",
+  "Woofer Speaker":"woofer-speaker.jpg",
+  "Laptop Computer":"laptop-computer.jpg",
+  "Desktop Computer":"desktop-computer.jpg",
+  "Computer Monitor":"computer-monitor.jpg",
+  "HP Printer":"hp-printer.jpg",
+  "Canon Printer":"canon-printer.jpg",
+  "Digital Camera":"digital-camera.jpg",
+  "Microwave Oven":"microwave-oven.jpg",
+  "Double-Door Fridge":"double-door-fridge.jpg",
+  "Single-Door Fridge":"single-door-fridge.jpg",
+  "Washing Machine":"washing-machine.jpg",
+  "Electric Cooker":"electric-cooker.jpg",
+  "Gas Cooker":"gas-cooker.jpg",
+  "Water Dispenser":"water-dispenser.jpg",
+  "Blender":"blender.jpg",
+  "Electric Kettle":"electric-kettle.jpg",
+  "Rice Cooker":"rice-cooker.jpg",
+  "DVD Player":"dvd-player.jpg",
+  "Decoder":"decoder.jpg",
+  "UPS Backup":"ups-backup.jpg",
+  "Wi-Fi Router":"wi-fi-router.jpg",
+  "Projector":"projector.jpg",
+  "Electric Iron":"electric-iron.jpg",
+  "Vacuum Cleaner":"vacuum-cleaner.jpg",
+  "Air Fryer":"air-fryer.jpg",
+  "Portable Fan":"portable-fan.jpg",
+
+  // FURNITURE
+  "Single Bed Frame":"single-bed-frame.jpg",
+  "Double Bed Frame":"double-bed-frame.jpg",
+  "Queen Size Bed":"queen-size-bed.jpg",
+  "King Size Bed":"king-size-bed.jpg",
+  "Wooden Bed Frame":"wooden-bed-frame.jpg",
+  "Metal Bed Frame":"metal-bed-frame.jpg",
+  "Single Bed with Mattress":"single-bed-mattress.jpg",
+  "Double Bed with Mattress":"double-bed-mattress.jpg",
+  "Queen Bed with Mattress":"queen-bed-mattress.jpg",
+  "Bunk Bed":"bunk-bed.jpg",
+  "Three-Door Wardrobe":"three-door-wardrobe.jpg",
+  "Two-Door Wardrobe":"two-door-wardrobe.jpg",
+  "Four-Door Wardrobe":"four-door-wardrobe.jpg",
+  "Sliding-Door Wardrobe":"sliding-door-wardrobe.jpg",
+  "Wooden Wardrobe":"wooden-wardrobe.jpg",
+  "Metal Wardrobe":"metal-wardrobe.jpg",
+  "Bedside Cabinet":"bedside-cabinet.jpg",
+  "Chest of Drawers":"chest-of-drawers.jpg",
+  "Dressing Table":"dressing-table.jpg",
+  "Mirror Cabinet":"mirror-cabinet.jpg",
+  "Three-Seater Sofa":"three-seater-sofa.jpg",
+  "Two-Seater Sofa":"two-seater-sofa.jpg",
+  "Five-Seater Sofa Set":"five-seater-sofa-set.jpg",
+  "L-Shaped Sofa":"l-shaped-sofa.jpg",
+  "Single Sofa Seat":"single-sofa-seat.jpg",
+  "Recliner Chair":"recliner-chair.jpg",
+  "Coffee Table":"coffee-table.jpg",
+  "TV Stand":"tv-stand.jpg",
+  "TV Cabinet":"tv-cabinet.jpg",
+  "Bookshelf":"bookshelf.jpg",
+  "Study Desk":"study-desk.jpg",
+  "Office Desk":"office-desk.jpg",
+  "Office Chair":"office-chair.jpg",
+  "Dining Table - 4 Seater":"dining-table-4-seater.jpg",
+  "Dining Table - 6 Seater":"dining-table-6-seater.jpg",
+  "Dining Chairs (Set of 4)":"dining-chairs-set-of-4.jpg",
+  "Plastic Chairs (Set of 4)":"plastic-chairs-set-of-4.jpg",
+  "Wooden Bench":"wooden-bench.jpg",
+  "Shoe Rack":"shoe-rack.jpg",
+  "Kitchen Cabinet":"kitchen-cabinet.jpg",
+  "Kitchen Shelf":"kitchen-shelf.jpg",
+  "Display Cabinet":"display-cabinet.jpg",
+  "Filing Cabinet":"filing-cabinet.jpg",
+  "Laundry Cabinet":"laundry-cabinet.jpg",
+  "Mattress - Single":"mattress-single.jpg",
+  "Mattress - Double":"mattress-double.jpg",
+  "Mattress - Queen":"mattress-queen.jpg",
+  "Mattress - King":"mattress-king.jpg",
+  "Foam Mattress":"foam-mattress.jpg",
+  "Foldable Bed":"foldable-bed.jpg",
+  "Baby Cot":"baby-cot.jpg",
+  "Baby Changing Table":"baby-changing-table.jpg",
+  "Outdoor Table":"outdoor-table.jpg",
+  "Outdoor Chairs (Set of 2)":"outdoor-chairs-set-of-2.jpg",
+  "Patio Sofa Set":"patio-sofa-set.jpg",
+  "Storage Trunk":"storage-trunk.jpg",
+  "Plastic Storage Cabinet":"plastic-storage-cabinet.jpg",
+  "Wall Shelf":"wall-shelf.jpg",
+  "Corner Shelf":"corner-shelf.jpg",
+  "Computer Table":"computer-table.jpg",
+  "Reception Desk":"reception-desk.jpg",
+  "Bar Stool (Pair)":"bar-stool-pair.jpg"
 };
 
+// BUILD PRODUCTS
 const products = inventory.map((item,index)=>({
-id:index+1,
-category:item[0],
-name:item[1],
-price:item[2],
-icon:item[3],
-image:imageFiles[item[1]] || "",
-condition:"Good",
-description:"Contact the owner for more details and to negotiate the price."
+  id:index+1,
+  category:item[0],
+  name:item[1],
+  price:item[2],
+  icon:item[3],
+  image:imageFiles[item[1]] || "",
+  condition:"Good",
+  description:"Contact the owner for more details and to negotiate the price."
 }));
 
 let selectedCategory="All";
 
 function setCategory(category,button){
-selectedCategory=category;
-document.querySelectorAll(".filters button").forEach(b=>b.classList.remove("active"));
-button.classList.add("active");
-renderProducts();
+  selectedCategory=category;
+
+  document.querySelectorAll(".filters button")
+    .forEach(b=>b.classList.remove("active"));
+
+  button.classList.add("active");
+  renderProducts();
 }
 
 function formatPrice(price){
-return "KSh "+Number(price).toLocaleString("en-KE");
+  return "KSh "+Number(price).toLocaleString("en-KE");
 }
 
 function whatsappLink(product){
-const message=`Hello, I am interested in ${product.name}. Your listed asking price is ${formatPrice(product.price)}. Is it available? I would like to negotiate.`;
-return `https://wa.me/${OWNER}?text=${encodeURIComponent(message)}`;
+  const message=`Hello, I am interested in ${product.name}. Your listed asking price is ${formatPrice(product.price)}. Is it available? I would like to negotiate.`;
+
+  return `https://wa.me/${OWNER}?text=${encodeURIComponent(message)}`;
 }
 
+// IMAGE VIEWER
 function openViewer(image,name){
-if(!image)return;
-const viewer=document.getElementById("imageViewer");
-document.getElementById("viewerImage").src=image;
-document.getElementById("viewerCaption").textContent=name;
-viewer.classList.add("show");
-document.body.style.overflow="hidden";
+  if(!image)return;
+
+  const viewer=document.getElementById("imageViewer");
+
+  document.getElementById("viewerImage").src=image;
+  document.getElementById("viewerCaption").textContent=name;
+
+  viewer.classList.add("show");
+  document.body.style.overflow="hidden";
 }
 
 function closeViewer(){
-document.getElementById("imageViewer").classList.remove("show");
-document.getElementById("viewerImage").src="";
-document.body.style.overflow="";
+  const viewer=document.getElementById("imageViewer");
+
+  viewer.classList.remove("show");
+  document.getElementById("viewerImage").src="";
+  document.body.style.overflow="";
 }
+
+document.getElementById("imageViewer").addEventListener("click",function(e){
+  if(e.target===this){
+    closeViewer();
+  }
+});
+
+document.getElementById("closeViewer").addEventListener("click",closeViewer);
 
 document.addEventListener("keydown",function(e){
-if(e.key==="Escape")closeViewer();
+  if(e.key==="Escape")closeViewer();
 });
 
+// RENDER PRODUCTS
 function renderProducts(){
-const query=document.getElementById("search").value.toLowerCase().trim();
-const grid=document.getElementById("productGrid");
 
-const filtered=products.filter(p=>{
-const categoryMatch=selectedCategory==="All"||p.category===selectedCategory;
-const searchMatch=(p.name+" "+p.category).toLowerCase().includes(query);
-return categoryMatch&&searchMatch;
-});
+  const query=document.getElementById("search").value.toLowerCase().trim();
+  const grid=document.getElementById("productGrid");
 
-document.getElementById("count").textContent=`${filtered.length} products`;
-document.getElementById("empty").style.display=filtered.length?"none":"block";
+  const filtered=products.filter(p=>{
 
-grid.innerHTML=filtered.map(p=>`
-<article class="card">
-<div class="product-image" onclick="openViewer('${p.image}','${p.name.replace(/'/g,"&#39;")}')">
-${p.image
-? `<img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-<div class="placeholder" style="display:none">${p.icon}</div>
-<span class="zoom-hint">Tap to enlarge</span>`
-: `<div class="placeholder">${p.icon}</div>`
+    const categoryMatch=
+      selectedCategory==="All"||p.category===selectedCategory;
+
+    const searchMatch=
+      (p.name+" "+p.category).toLowerCase().includes(query);
+
+    return categoryMatch&&searchMatch;
+  });
+
+  document.getElementById("count").textContent=
+    `${filtered.length} products`;
+
+  document.getElementById("empty").style.display=
+    filtered.length?"none":"block";
+
+  grid.innerHTML=filtered.map(p=>`
+
+    <article class="card">
+
+      <div class="product-image"
+        onclick="openViewer('${p.image}','${p.name.replace(/'/g,"&#39;")}')">
+
+        ${p.image
+          ? `
+            <img
+              src="${p.image}"
+              alt="${p.name}"
+              loading="lazy"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+
+            <div class="placeholder" style="display:none">
+              ${p.icon}
+            </div>
+
+            <span class="zoom-hint">Tap to enlarge</span>
+          `
+          : `
+            <div class="placeholder">${p.icon}</div>
+          `
+        }
+
+        <span class="category-tag">${p.category}</span>
+
+      </div>
+
+      <div class="card-info">
+
+        <h3>${p.name}</h3>
+
+        <div class="price">${formatPrice(p.price)}</div>
+
+        <span class="negotiable">PRICE NEGOTIABLE</span>
+
+        <div class="condition">
+          Condition: ${p.condition}
+        </div>
+
+        <div class="actions">
+          <a class="wa"
+             href="${whatsappLink(p)}"
+             target="_blank"
+             rel="noopener">
+             WhatsApp
+          </a>
+
+          <a class="call" href="tel:+${OWNER}">
+            Call
+          </a>
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join("");
 }
-<span class="category-tag">${p.category}</span>
-</div>
 
-<div class="card-info">
-<h3>${p.name}</h3>
-<div class="price">${formatPrice(p.price)}</div>
-<span class="negotiable">PRICE NEGOTIABLE</span>
-<div class="condition">Condition: ${p.condition}</div>
-<div class="actions">
-<a class="wa" href="${whatsappLink(p)}" target="_blank" rel="noopener">WhatsApp</a>
-<a class="call" href="tel:+${OWNER}">Call</a>
-</div>
-</div>
-</article>
-`).join("");
-}
-
+// INITIALISE
 renderProducts();
+
+// CHECK CATALOGUE COUNTS
+console.log("Total products:",products.length);
+console.log("Products with assigned images:",
+  products.filter(p=>p.image).length
+);
+
 </script>
 
 </body>
